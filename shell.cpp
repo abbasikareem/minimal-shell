@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
                 chdir(home);
             }
             else if (chdir(tokens[1])) {
-                cerr << "mush: cd: no such file or directory '" << tokens[1] << "'\n";
+                cerr << "shell: cd: no such file or directory '" << tokens[1] << "'\n";
             }
         }
         else { // handle non-builtins
@@ -77,11 +77,11 @@ int main(int argc, char *argv[])
                 execvp(tokens[0], tokens); 
 
                 // handle errors
-                cerr << "mush: command '" << tokens[0] << "' not found\n";
+                cerr << "shell: command '" << tokens[0] << "' not found\n";
                 exit(1);
             }
             else if (pid < 0) {
-                cerr << "oops!\n";
+                cerr << "shell: invalid PID\n";
             }
             else { // parent
                 
